@@ -62,11 +62,6 @@ Airflow orchestrates the following tasks:
 
     Contains ISO-3 codes and names of Indian States.
 
-## Tableau Dashboard 
-![GLBAL_GIF](https://user-images.githubusercontent.com/91481367/173543706-e313e8ed-27d7-4586-9989-3f33630e9a48.gif)
-
-![India gif](https://user-images.githubusercontent.com/91481367/173548616-e16ec8b7-9cb9-4e13-9c98-005c99466a18.gif)
-
 
 ## Setup
 ### 1. Prerequisite
@@ -100,3 +95,10 @@ Once the dag-run is successful, check the output folder of the S3 bucket.
 
 ### 5. Tableau Dashboard 
 
+<p align="left">
+    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Tableau/GLOBAL.png">
+</p>
+
+<p align="left">
+    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Tableau/INDIA.png">
+</p>
