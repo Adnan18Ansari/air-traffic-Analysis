@@ -64,6 +64,7 @@ Once the dag-run is successful, check the output folder of the S3 bucket.
 </p>
 
 ### 5. Tableau Dashboard 
+Build dashboard in Tableau with Amazon Athena as a data source.
 <p align="left">
     <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Tableau/GLOBAL.png">
 </p>
