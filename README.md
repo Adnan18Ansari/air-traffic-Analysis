@@ -1,4 +1,4 @@
-# Impact of Covid-19 on the Aviation Industry
+# Air Traffic Analysis During Covid-19 
 
 ## Introduction
 Aviation provides the only rapid worldwide transportation network, which makes it essential for global business. It generates economic growth, creates jobs, and facilitates international trade and tourism. The air transport industry supports a total of 65.5 million jobs globally. It provides 10.2 million direct jobs.
@@ -8,12 +8,12 @@ This project aims to analyse the impact of Covid-19 on the aviation industry. It
 ## Architecture
 
 <p align="left">
-    <img src="https://github.com/siddharth271101/Covid-19-and-Aviation-Industry/blob/main/assets/images/Final-architecture.png">
+    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Final-architecture.png">
 </p>
 
 ## Airflow Data Pipeline
 <p align="left">
-    <img src="https://github.com/siddharth271101/Covid-19-and-Aviation-Industry/blob/main/assets/images/Airflow_graph_view.png">
+    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Airflow_graph_view.png">
 </p>
 
 Airflow orchestrates the following tasks:
@@ -67,66 +67,36 @@ Airflow orchestrates the following tasks:
 
 ![India gif](https://user-images.githubusercontent.com/91481367/173548616-e16ec8b7-9cb9-4e13-9c98-005c99466a18.gif)
 
-Find the entire analysis [here](https://github.com/siddharth271101/Covid-19-and-Aviation-Industry/blob/main/assets/images/Tableau/Final.pdf)
 
 ## Setup
 ### 1. Prerequisite
 
-1. Docker with at least 4GB of RAM and Docker Compose v1.27.0 or later
-2. [AWS account](https://aws.amazon.com/)
-3. [AWS CLI installed and configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
-4. [Tableau Desktop](https://www.tableau.com/products/desktop)
+1. Docker and Docker Compose v1.27.0 or later
+2. [AWS account]
+3. [AWS CLI installed and configured]
+4. [Tableau Desktop]
 
-### 2. Clone the repository
+### 2. Run setup.sh
 
-Clone and cd into the project directory.
-
-```
-git clone <https://github.com/siddharth271101/Covid-19-and-Aviation-Industry.git>
-cd beginner_de_project
-```
-Note: Replace {your-bucket-name} in `setup.sh`, `covid_flights_etl.py` and `covid_flights_dag.py` before proceeding with the steps mentioned below.
-
-### 3. Install all the dependencies
-
-- Create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-- Once the virtual environment is activated, run the following command
-    
-    ``` 
-    $ pip install -r requirements.txt
-    ```
-### 4. Run `setup.sh` 
-
-Download the data and create an s3 bucket by running `setup.sh` as shown below
-
-```
-sh setup.h
-```
-
+Download the data and create an s3 bucket by running `setup.sh`.
 `setup.sh` also starts to incrementally load the opensky data to the S3 bucket.
+After `setup.sh` runs successfully, start the docker container.
 
-After `setup.sh` runs successfully, start the docker container using the following command
-
-### 5. Docker and Airflow
-
-```
-docker compose -f docker-compose-LocalExecutor.yml up -d
-```
+### 3. Docker and Airflow
 
 We use the following docker containers -
 
 1. Airflow
 2. Postgres DB (as Airflow metadata DB)
 
-Open the Airflow UI by hitting [http://localhost:8080](http://localhost:8080/) in browser, start the covid_flights_dag DAG.
+Open the Airflow UI on localhost:8080 in browser, and start the covid_flights_dag DAG.
 
-### 6. AWS
+### 4. AWS
 
 Once the dag-run is successful, check the output folder of the S3 bucket.
-
 <p align="left">
-    <img src="https://github.com/siddharth271101/Covid-19-and-Aviation-Industry/blob/main/assets/images/S3_outputdir.png">
+    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/S3_outputdir.png">
 </p>
 
-This [blog](https://aws.amazon.com/blogs/big-data/building-aws-data-lake-visualizations-with-amazon-athena-and-tableau/) explains the steps in detail to build a Tableau dashboard using Athena as a data source.
+### 5. Tableau Dashboard 
 
