@@ -253,12 +253,12 @@ if __name__ == '__main__':
     scSpark = create_spark_session("covid19_airtraffic_data")
     scSpark.sql("set spark.sql.legacy.timeParserPolicy=LEGACY")
 
-    os_path = "s3://{your-bucket-name}/raw/opensky/*.csv"
-    airports_path = "s3://{your-bucket-name}/airports.csv"
-    covid_path = "s3://-/raw/covid.csv"
-    countries_path = "s3://{your-bucket-name}/raw/countries.json"
-    continents_path = "s3://{your-bucket-name}/raw/continents.csv"
-    ind_states_path = "s3://{your-bucket-name}/raw/india-states.csv"
+    os_path = "s3://adn18/raw/opensky/*.csv"
+    airports_path = "s3://adn18/airports.csv"
+    covid_path = "s3://adn18/raw/covid.csv"
+    countries_path = "s3://adn18/raw/countries.json"
+    continents_path = "s3://adn18/raw/continents.csv"
+    ind_states_path = "s3://adn18/raw/india-states.csv"
 
     df_os_raw = scSpark.read.csv(os_path, header='true', sep=',', inferSchema=False)
     df_airports_raw = scSpark.read.csv(airports_path, header='true', sep=',', inferSchema=False)
@@ -277,7 +277,7 @@ if __name__ == '__main__':
     df_airports = airports_transform(df_airports, df_countries)
     df_all_traffic = flights_transform(df_flights, df_airports)
 
-    OUTPUT_LOCATION = 's3://{your-bucket-name}/output/'
+    OUTPUT_LOCATION = 's3://adn18/output/'
 
     # save the above results as parquet files in the bucket
     output_result(df_airports, OUTPUT_LOCATION, 'airports_dim')
