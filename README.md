@@ -27,39 +27,23 @@ Airflow orchestrates the following tasks:
 
 ## Data sources
 
-
 1. [Opensky](https://zenodo.org/record/6603766)
-
     The data in this dataset is derived and cleaned from the full OpenSky dataset to illustrate the development of air traffic during the COVID-19 pandemic. It spans all flights seen by the network's more than 2500 members since 1 January 2019.
-
     In order to avoid the out-of-memory issue, data is incrementally loaded into the s3 bucket.
 
-    Martin Strohmeier, Xavier Olive, Jannis Lübbe, Matthias Schäfer, and Vincent Lenders
-
-    **"Crowdsourced air traffic data from the OpenSky Network 2019–2020"**
-
-    *Earth System Science Data* 13(2), 2021
-
-    [https://doi.org/10.5194/essd-13-357-2021](https://doi.org/10.5194/essd-13-357-2021)
-
 2. [JHU CSSE](https://github.com/CSSEGISandData/COVID-19)
-
     This dataset includes time-series data tracking the number of people affected by COVID-19 worldwide
 
 3. [Airport Codes](https://datahub.io/core/airport-codes)
-
     The data is in CSV and contains the list of all airport codes.
 
 4. [Country-Codes](https://datahub.io/core/country-list)
-
     The dataset contains country names (official short names in English) in alphabetical order as given in ISO 3166-1 and the corresponding ISO 3166-1-alpha-2 code elements. [ISO 3166-1]
 
 5. [Continent-codes](https://www.kaggle.com/datasets/andradaolteanu/country-mapping-iso-continent-region)
-
     The dataset was used to map countries with continents.
 
 6. [States](https://www.kaggle.com/datasets/arjunaraoc/india-states)
-
     Contains ISO-3 codes and names of Indian States.
 
 
