@@ -11,7 +11,7 @@ mv dags/data/continents2.csv dags/data/continents.csv
 
 python scripts/fetch_covid.py
 
-aws s3api create-bucket --acl public-read-write --bucket {your-bucket-name} --create-bucket-configuration LocationConstraint=ap-south-1
+aws s3api create-bucket --acl public-read-write --bucket adn18 --create-bucket-configuration LocationConstraint=ap-south-1
 
 pip install bs4
 pip install requests
@@ -22,7 +22,7 @@ for i in $(jq -r ". | .[]" ~/Documents/test/datasetURLs.json)
   do
     wget $i
     gunzip $(basename $i)
-    aws s3 cp $(basename $i .gz) s3://{your-bucket-name}/raw/opensky/$(basename $i .gz)
+    aws s3 cp $(basename $i .gz) s3://adn18/raw/opensky/$(basename $i .gz)
     rm $(basename $i .gz)
   done
 

@@ -10,8 +10,7 @@ def create_spark_session(app_name: str) -> SparkSession:
     return ss
 
 def output_result(df: DataFrame, output_location: str, output_folder: str) -> None:
-    """ Save the DataFrame <df> as a csv file in the location specified by
-    <output_location>.
+    """ Save the DataFrame <df> as a csv file in the location specified by output_location.
     """
     # condense all data points in one single file
     df.coalesce(1).write.parquet(path=output_location + output_folder,
@@ -42,6 +41,7 @@ def enrich_flight_data(df_flights, df_airports):
 
     # classify the flight as domestic or international based on origin and destination countries
     # if either source or destination is None, we assume the flight is domestic
+
     flight_type_cond = when(col('origin_country_code').isNull() | col('destination_country_code').isNull(), 'domestic') \
         .otherwise(when(col('origin_country_code') == col('destination_country_code'), 'domestic')
                    .otherwise('international'))
@@ -64,6 +64,7 @@ def filter_airport_types(df_flights):
     # we'll filter with origin or destination airports with type balloonport, seaplane_base, heliport, closed.
     # These airport types appear to be more of recreational type and should be irrelevant to our analysis.
     # Small, medium and large airports can also have recreational and charter, but we can't identify them.
+
     ap_types_allowed = ['large_airport', 'medium_airport', 'small_airport']
     df_flights = df_flights \
         .filter(col('origin_airport_type').isin(ap_types_allowed) | col('origin_airport_type').isNull()) \
@@ -86,6 +87,7 @@ def aggregate_flights(df_flights):
     # calculate traffic to and from each airport per day
     # for every flight that leaves an origin airport, we can count that as an outbound flight for the airport
     # similarly for destination airport, we count it as inbound
+
     df_outbound = df_flights \
         .filter(col('origin').isNotNull()) \
         .groupBy(col('date'), col('origin').alias('airport'), col('type')) \
@@ -98,6 +100,7 @@ def aggregate_flights(df_flights):
     # join the inbound and outbound traffic for all airports.
     # notice that since we've filtered origin and destination for nulls, we won't have full join where both are null.
     # pivot the flight type to convert it into columns.
+    
     df_all_traffic = df_outbound.join(df_inbound, ['date', 'airport', 'type'], how='full') \
         .groupBy('date', 'airport') \
         .pivot('type') \

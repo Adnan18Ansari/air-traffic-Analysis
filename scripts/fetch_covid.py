@@ -18,8 +18,7 @@ dead["Province/State"] = dead["Province/State"].fillna("")
 recovered = pd.read_csv(base_url + recovered_url)
 recovered["Province/State"] = recovered["Province/State"].fillna("")
 
-# these are the country-province combinations, we go through them to
-# reformat the columns
+# these are the country-province combinations, we go through them to reformat the columns
 combos = np.array(
     confirmed[["Country/Region", "Province/State"]].to_records(index=False)
 )
@@ -27,8 +26,7 @@ combos = np.array(
 data = pd.DataFrame()
 for country, state in combos:
 
-    # Here we just need to check if we are dealing with a country-province
-    # or just a country
+    # Here we just need to check if we are dealing with a country-province or just a country
     is_na = False
     if state == "":
         is_na = True
@@ -53,11 +51,10 @@ for country, state in combos:
     ].transpose()
     df_r = df_r.drop(["Province/State", "Country/Region", "Lat", "Long"])
 
-    # Canada is annoying and doesn't report recovered at a province level
     try:
         df_r.columns = ["Recovered"]
     except:
-        df_r["Recovered"] = np.NaN  # May change this to the empty string
+        df_r["Recovered"] = np.NaN  
 
     df_c = df_c.transpose().drop(
         ["Province/State", "Country/Region", "Lat", "Long"]

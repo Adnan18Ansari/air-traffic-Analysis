@@ -14,7 +14,7 @@ from airflow.contrib.operators.emr_terminate_job_flow_operator import (
 )
 
 # Configurations
-BUCKET_NAME = "{your-bucket-name}"  # replace this with your bucket name
+BUCKET_NAME = "adn18"  
 airports_data = "./dags/data/airports.csv"
 covid_data = "./dags/data/covid.csv"
 countries_data = "./dags/data/countries.json"
@@ -164,6 +164,7 @@ step_adder = EmrAddStepsOperator(
 )
 
 last_step = len(SPARK_STEPS) - 1
+
 # wait for the steps to complete
 step_checker = EmrStepSensor(
     task_id="watch_step",
