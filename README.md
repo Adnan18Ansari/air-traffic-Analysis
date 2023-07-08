@@ -10,10 +10,7 @@ This project aims to analyse the impact of Covid-19 on the aviation industry. It
     <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Final-architecture.png">
 </p>
 
-## Airflow Data Pipeline
-<p align="left">
-    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Airflow_graph_view.png">
-</p>
+## Data Pipeline
 
 Airflow orchestrates the following tasks:-
 1. Upload the data and scripts from local machine to S3 bucket
@@ -67,8 +64,4 @@ Once the dag-run is successful, check the output folder of the S3 bucket.
 Build dashboard in Tableau with Amazon Athena as a data source.
 <p align="left">
     <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Tableau/GLOBAL.png">
-</p>
-
-<p align="left">
-    <img src="https://github.com/Adnan18Ansari/air-traffic-Analysis/blob/main/images/Tableau/INDIA.png">
 </p>
